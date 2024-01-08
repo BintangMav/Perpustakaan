@@ -15,6 +15,7 @@
                                 <th>Kode</th>
                                 <th>Judul</th>
                                 <th>Kategori</th>
+                                <th>Penulis</th>
                                 <th>Stok</th>
                                 <th>Tahun</th>
                                 <th>Aksi</th>
@@ -26,7 +27,8 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$u->kode_buku}}</td>
                                 <td>{{$u->judul_buku}}</td>
-                                <td>{{$u->kategori_buku}}</td>
+                                <td>{{$u->Kategori->nama_kategori}}</td>
+                                <td>{{$u->Penulis->nama_penulis}}</td>
                                 <td>{{$u->stok_buku}}</td>
                                 <td>{{$u->tahun_buku}}</td>
                                 <td>

@@ -43,7 +43,8 @@ class BukuController extends Controller
         Buku::create([
             'kode_buku'=>$request->kode_buku,
             'judul_buku'=>$request->judul_buku,
-            'kategori_buku'=>$request->kategori_buku,
+            'id_kategori'=>$request->id_kategori,
+            'id_penulis'=>$request->id_penulis,
             'stok_buku'=>$request->stok_buku,
             'tahun_buku'=>$request->tahun_buku,
             $request->except(['_token']),
@@ -59,8 +60,10 @@ class BukuController extends Controller
      */
     public function show($id)
     {
+        $kategori = Kategori::all();
+        $penulis = Penulis::all();
         $buku = Buku::find($id);
-        return view ('home.buku.edit', compact(['buku']));
+        return view ('home.buku.edit', compact(['buku','kategori','penulis']));
     }
 
     /**
@@ -87,7 +90,8 @@ class BukuController extends Controller
         $buku->update([
             'kode_buku'=>$request->kode_buku,
             'judul_buku'=>$request->judul_buku,
-            'kategori_buku'=>$request->kategori_buku,
+            'id_kategori'=>$request->id_kategori,
+            'id_penulis'=>$request->id_penulis,
             'stok_buku'=>$request->stok_buku,
             'tahun_buku'=>$request->tahun_buku,
             $request->except(['_token']),

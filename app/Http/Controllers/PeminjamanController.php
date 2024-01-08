@@ -21,19 +21,19 @@ class PeminjamanController extends Controller
         return view('home.peminjaman.index', compact(['peminjaman']));
     }
 
-    public function cetak()
-    {
+    // public function cetak()
+    // {
 
-        $peminjaman = Peminjaman::all();
-        return view('home.peminjaman.cetak', compact(['peminjaman']));
-    }
+    //     $peminjaman = Peminjaman::all();
+    //     return view('home.peminjaman.cetak', compact(['peminjaman']));
+    // }
 
-    public function struk($id)
-    {
+    // public function struk($id)
+    // {
 
-        $peminjaman = Peminjaman::find($id);
-        return view('home.peminjaman.struk', compact(['peminjaman']));
-    }
+    //     $peminjaman = Peminjaman::find($id);
+    //     return view('home.peminjaman.struk', compact(['peminjaman']));
+    // }
     /**
      * Show the form for creating a new resource.
      *

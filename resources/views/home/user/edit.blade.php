@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Level</label>
-                            <select class="form-control" value="{{$user->level}} id="">
+                            <select class="form-control" name="level" value="{{$user->level}} id="">
                                 <option value="admin">Admin</option>
                                 <option value="petugas">Petugas</option>
                             </select>

@@ -12,7 +12,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Nama</label>
-                            <input type="text" value="{{$katgeori->nama_kategori}}" name="nama_kategori" class="form-control" id="" placeholder="Nama">
+                            <input type="text" value="{{$kategori->nama_kategori}}" name="nama_kategori" class="form-control" id="" placeholder="Nama">
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="/kategori" class="btn btn-light">Cancel</a>

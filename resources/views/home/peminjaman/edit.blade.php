@@ -12,15 +12,27 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Petugas</label>
-                            <input type="text" value="{{$petugas->id_member}}" name="id_petugas" class="form-control" id="" placeholder="Petugas">
+                            <select name="id_petugas" class="form-control" id="">
+                                @foreach ($user as $user)
+                                <option value="{{$user->id}}">{{$user->nama_petugas}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="">Member</label>
-                            <input type="text" value="{{$peminjaman->id_member}}" name="id_member" class="form-control" id="" placeholder="Member">
+                            <label for="">Nama Peminjam</label>
+                            <select name="id_member" class="form-control" id="">
+                                @foreach ($member as $member)
+                                <option value="{{$member->id}}">{{$member->nama_member}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="">Buku</label>
-                            <input type="text" value="{{$peminjaman->id_buku}}" name="id_buku" class="form-control" id="" placeholder="Buku">
+                            <label for="">Nama Buku</label>
+                            <select name="id_buku" class="form-control" id="">
+                                @foreach ($buku as $buku)
+                                <option value="{{$buku->id}}">{{$buku->nama_buku}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah Buku</label>
