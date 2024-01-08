@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PeminjamanController extends Controller
 {
@@ -21,12 +22,17 @@ class PeminjamanController extends Controller
         return view('home.peminjaman.index', compact(['peminjaman']));
     }
 
-    // public function cetak()
-    // {
+    public function cetak()
+    {
+        $peminjaman = Peminjaman::all();
+        return view('home.peminjaman.cetak', compact(['peminjaman']));
+    }
 
-    //     $peminjaman = Peminjaman::all();
-    //     return view('home.peminjaman.cetak', compact(['peminjaman']));
-    // }
+    public function laporan()
+    {
+        $peminjaman = Peminjaman::all();
+        return view('home.peminjaman.laporan', compact(['peminjaman']));
+    }
 
     // public function struk($id)
     // {
@@ -53,8 +59,23 @@ class PeminjamanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     // Validasi form request, pastikan tgl_pinjam ada di dalam request
+
+   
     public function store(Request $request)
     {
+        $request->validate([
+            'tgl_pinjam' => 'required|date',
+            'tgl_kembali' => 'nullable|date',
+        ]);
+    
+        // Ambil tanggal pinjam dari form
+        $tglPinjam = Carbon::parse($request->tgl_pinjam);
+    
+        // Hitung tanggal kembali dengan menambahkan 3 hari
+        $tglKembali = $request->filled('tgl_kembali') ? Carbon::parse($request->tgl_kembali) : $tglPinjam->addDays(3);
+    
         Peminjaman::create([
             'id_petugas'=>$request->id_petugas,
             'id_member'=>$request->id_member,
@@ -76,7 +97,7 @@ class PeminjamanController extends Controller
     public function show($id)
     {
         $peminjaman = Peminjaman::find($id);
-        $buku = Alat::all();
+        $buku = Buku::all();
         $user = User::all();
         $member = Member::all();
         return view('home.peminjaman.create', compact(['buku','member','user','peminjaman']));

@@ -46,7 +46,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/simple-line-icons.html">
+            <a class="nav-link" href="/peminjaman/laporan">
                 <span class="menu-title">Laporan Peminjaman</span>
                 <i class="icon-book-open menu-icon"></i>
             </a>

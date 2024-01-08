@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Table User <a href="/user/create" class="btn btn-info float-right">Tambah</a></h4>
+                    <h4 class="card-title">Table User <a href="/user/create" class="btn btn-info float-right btn-sm">Tambah</a></h4>
                     </p>
                     <table id="dataTable" class="table table-hover">
                         <thead>
@@ -26,8 +26,8 @@
                                 <td>{{$u->username}}</td>
                                 <td>{{$u->level}}</td>
                                 <td>
-                                    <a href="/user/{{$u->id}}/edit" class="btn btn-warning">Edit</a>
-                                    <button class="btn btn-danger" onclick="Delete('/user/{{$u->id}}/hapus')">Hapus</button>
+                                    <a href="/user/{{$u->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                    <button class="btn btn-danger btn-sm" onclick="Delete('/user/{{$u->id}}/hapus')">Hapus</button>
                                 </td>
                             </tr>
                             @endforeach

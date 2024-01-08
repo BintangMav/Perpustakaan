@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title"> Table Penulis<a href="/penulis/create" class="btn btn-info float-right">Tambah</a></h4>
+                    <h4 class="card-title"> Table Penulis<a href="/penulis/create" class="btn btn-info btn-sm float-right">Tambah</a></h4>
                     </p>
                     <table id="dataTable" class="table table-hover">
                         <thead>
@@ -22,8 +22,8 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$u->nama_penulis}}</td>
                                 <td>
-                                    <a href="/penulis/{{$u->id}}/edit" class="btn btn-warning">Edit</a>
-                                    <button class="btn btn-danger" onclick="Delete('/penulis/{{$u->id}}/hapus')">Hapus</button>
+                                    <a href="/penulis/{{$u->id}}/edit" class="btn btn-warning btn-sm ">Edit</a>
+                                    <button class="btn btn-danger btn-sm" onclick="Delete('/penulis/{{$u->id}}/hapus')">Hapus</button>
                                 </td>
                             </tr>
                             @endforeach

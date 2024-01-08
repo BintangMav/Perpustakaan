@@ -57,6 +57,9 @@ Route::middleware(['auth','level:admin,petugas'])->group(function(){
     Route::get('/peminjaman/{id}/edit', [PeminjamanController::class,'show']);
     Route::post('/peminjaman/{id}/update', [PeminjamanController::class,'update']);
     Route::get('/peminjaman/{id}/hapus', [PeminjamanController::class,'destroy']);
+    Route::get('/peminjaman/cetak', [PeminjamanController::class,'cetak']);
+    Route::get('/peminjaman/laporan', [PeminjamanController::class,'laporan']);
+
 
     Route::get('/penulis', [PenulisController::class,'index']);
     Route::get('/penulis/create', [PenulisController::class,'create']);

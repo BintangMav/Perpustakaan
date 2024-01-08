@@ -7,13 +7,13 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Edit Data Peminjaman</h4>
-                    <form class="forms-sample" action="/peminjaman/{{$user->id}}/update" method="POST">
+                    <form class="forms-sample" action="/peminjaman/{{$peminjaman->id}}/update" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="">Petugas</label>
                             <select name="id_petugas" class="form-control" id="">
                                 @foreach ($user as $user)
-                                <option value="{{$user->id}}">{{$user->nama_petugas}}</option>
+                                <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -21,7 +21,7 @@
                             <label for="">Nama Peminjam</label>
                             <select name="id_member" class="form-control" id="">
                                 @foreach ($member as $member)
-                                <option value="{{$member->id}}">{{$member->nama_member}}</option>
+                                <option value="{{$member->id}}">{{$member->nama}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -29,13 +29,13 @@
                             <label for="">Nama Buku</label>
                             <select name="id_buku" class="form-control" id="">
                                 @foreach ($buku as $buku)
-                                <option value="{{$buku->id}}">{{$buku->nama_buku}}</option>
+                                <option value="{{$buku->id}}">{{$buku->judul_buku}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah Buku</label>
-                            <input type="text" value="{{$peminjaman->jumlah_buku}}" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah buku" required>
+                            <input type="number" value="{{$peminjaman->jumlah_buku}}" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah buku" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Pinjam</label>

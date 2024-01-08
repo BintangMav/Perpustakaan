@@ -53,21 +53,23 @@
                         <table  id="" class="table table-hover">
                             <thead >
                                 <tr style="background-color: rgb(155, 248, 137)">
-                                    <th>No</th>
+                                <th>No</th>
+                                <th>Petugas</th>
                                 <th>Member</th>
                                 <th>Buku</th>
                                 <th>Jumlah Buku</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Tanggal Kembali</th>
-                                <th>Aksi</th>
+                                
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($peminjaman as $u)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                <td>{{$u->id_member}}</td>
-                                <td>{{$u->id_buku}}</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$u->id_petugas}} - {{$u->User->name}}</td>
+                                <td>{{$u->id_member}} - {{$u->Member->nama}}</td>
+                                <td>{{$u->id_buku}} - {{$u->Buku->judul_buku}}</td>
                                 <td>{{$u->jumlah_buku}}</td>
                                 <td>{{$u->tgl_pinjam}}</td>
                                 <td>{{$u->tgl_kembali}}</td>

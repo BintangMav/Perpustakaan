@@ -10,6 +10,7 @@ class Member extends Model
     use HasFactory;
     protected $fillable = ['id_member','nama','alamat','no_telp'];
     protected $table = 'members';
+    
     public function Member()
     {
        return $this->hasMany(Member::class,'id_member','id'); 
