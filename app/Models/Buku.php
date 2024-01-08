@@ -15,4 +15,12 @@ class Buku extends Model
     {
        return $this->hasMany(Buku::class,'id_buku','id'); 
     }
+    public function Penulis()
+    {
+       return $this->belongsTo(Penulis::class,'id_penulis','id'); 
+    }
+    public function Kategori()
+    {
+       return $this->belongsTo(Kategori::class,'id_kategori','id'); 
+    }
 }

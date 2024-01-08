@@ -13,7 +13,6 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>No Telpon</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -22,7 +21,6 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$u->nama_penulis}}</td>
-                                <td>{{$u->no_telp}}</td>
                                 <td>
                                     <a href="/penulis/{{$u->id}}/edit" class="btn btn-warning">Edit</a>
                                     <button class="btn btn-danger" onclick="Delete('/penulis/{{$u->id}}/hapus')">Hapus</button>

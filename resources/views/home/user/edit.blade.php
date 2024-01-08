@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Default form</h4>
                     <p class="card-description"> Basic form layout </p>
-                    <form class="forms-sample" action="/siswa/{{$siswa->id}}/update" method="POST">
+                    <form class="forms-sample" action="/user/{{$user->id}}/update" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama</label>
@@ -20,11 +20,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" value="{{$user->password}}" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" name="password" value="{{$user->password}}" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender">Level</label>
-                            <select class="form-control" id="exampleSelectGender">
+                            <select class="form-control" value="{{$user->level}} id="">
                                 <option value="admin">Admin</option>
                                 <option value="petugas">Petugas</option>
                             </select>
