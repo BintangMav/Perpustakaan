@@ -6,17 +6,16 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
+                    <h4 class="card-title">Tambah Data Buku</h4>
                     <form class="forms-sample" action="/buku/simpan" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="">Kode Buku</label>
-                            <input type="text" name="kode_buku" class="form-control" id="" placeholder="Nama">
+                            <input type="text" name="kode_buku" class="form-control" id="" placeholder="Kode" required>
                         </div>
                         <div class="form-group">
                             <label for="">Judul Buku</label>
-                            <input type="text" name="judul_buku" class="form-control" id="" placeholder="Nama">
+                            <input type="text" name="judul_buku" class="form-control" id="" placeholder="Judul" required>
                         </div>
                         <div class="form-group">
                             <label for="">Kategori</label>
@@ -36,11 +35,11 @@
                         </div>
                         <div class="form-group">
                             <label for="">Stok Buku</label>
-                            <input type="text" name="stok_buku" class="form-control" id="" placeholder="Nama">
+                            <input type="text" name="stok_buku" class="form-control" id="" placeholder="Stok" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tahun Buku</label>
-                            <input type="text" name="tahun_buku" class="form-control" id="" placeholder="Nama">
+                            <input type="text" name="tahun_buku" class="form-control" id="" placeholder="Tahun" required>
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="/buku" class="btn btn-light">Cancel</a>

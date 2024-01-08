@@ -6,8 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
+                    <h4 class="card-title">Tambah Data Peminjaman</h4>
                     <form class="forms-sample" action="/peminjaman/simpan" method="POST">
                         @csrf
                         <div class="form-group">
@@ -36,15 +35,15 @@
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah Buku</label>
-                            <input type="text" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah Buku">
+                            <input type="text" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah Buku" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Pinjam</label>
-                            <input type="date" name="tgl_pinjam" class="form-control" id="" placeholder="Tanggal Pinjam">
+                            <input type="date" name="tgl_pinjam" class="form-control" id="" placeholder="Tanggal Pinjam" required>
                         </div>
                         <div class="form-group">
                             <label for="">tanggal Kembali</label>
-                            <input type="date" name="tgl_kembali" class="form-control" id="" placeholder="Tanggal Kembali">
+                            <input type="date" name="tgl_kembali" class="form-control" id="" placeholder="Tanggal Kembali" required>
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="/peminjaman" class="btn btn-light">Cancel</a>

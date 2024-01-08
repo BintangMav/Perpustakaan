@@ -12,6 +12,6 @@ class Member extends Model
     protected $table = 'members';
     public function Member()
     {
-       return $this->belongsTo(Member::class,'id_member','id'); 
+       return $this->hasMany(Member::class,'id_member','id'); 
     }
 }

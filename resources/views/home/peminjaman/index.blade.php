@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Hoverable Table <a href="/peminjaman/create" class="btn btn-info float-right">Tambah</a></h4>
+                    <h4 class="card-title"> Table Peminjaman <a href="/peminjaman/create" class="btn btn-info float-right">Tambah</a></h4>
                     </p>
                     <table id="dataTable" class="table table-hover">
                         <thead>

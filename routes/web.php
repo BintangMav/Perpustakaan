@@ -7,6 +7,8 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -20,6 +22,13 @@ use App\Http\Controllers\KategoriController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+    Route::get('/', [LoginController::class,'index']);
+    Route::get('/login', [LoginController::class,'index'])->name('login-admin');
+    Route::post('/PostLogin', [LoginController::class,'login']);
+    Route::get('/logout', [LoginController::class,'logout']);
+
+Route::middleware(['auth','level:admin,petugas'])->group(function(){
+    Route::get('/dashboard', [DashboardController::class,'index']);
 
     Route::get('/user', [UserController::class,'index']);
     Route::get('/user/create', [UserController::class,'create']);
@@ -62,3 +71,4 @@ use App\Http\Controllers\KategoriController;
     Route::get('/kategori/{id}/edit', [KategoriController::class,'show']);
     Route::post('/kategori/{id}/update', [KategoriController::class,'update']);
     Route::get('/kategori/{id}/hapus', [KategoriController::class,'destroy']);
+});

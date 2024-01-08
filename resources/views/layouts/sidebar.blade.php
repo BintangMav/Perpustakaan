@@ -4,11 +4,10 @@
             <a href="#" class="nav-link">
                 <div class="profile-image">
                     <img class="img-xs rounded-circle" src="{{asset('../assets/images/faces/face8.jpg')}}" alt="profile image">
-                    <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                    <p class="profile-name">Allen Moreno</p>
-                    <p class="designation">Administrator</p>
+                    <p class="profile-name">{{Auth()->User()->name}}</p>
+                    <p class="designation">{{Auth()->User()->level}}</p>
                 </div>
                 <div class="icon-container">
                     <i class="icon-bubbles"></i>
@@ -33,12 +32,16 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu"> 
+                    @if(Auth()->User()->level=='admin')
                     <li class="nav-item"> <a class="nav-link" href="/user">Kelola Data User</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/member">Kelola Data Member</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/kategori">Kelola Data Kategori</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/penulis">Kelola Data Penulis</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/buku">Kelola Data Buku</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/peminjaman">Kelola Data peminjaman</a></li>
+                    @endif
+                    @if(Auth()->User()->level=='admin'||Auth()->User()->level=='petugas')
+                    <li class="nav-item"> <a class="nav-link" href="/peminjaman">Kelola Data Peminjaman</a></li>
+                    @endif
                 </ul>
             </div>
         </li>
@@ -49,7 +52,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="/login">
                 <span class="menu-title">Logo Out</span>
                 <i class="icon-power menu-icon"></i>
             </a>

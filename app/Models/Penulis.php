@@ -12,6 +12,6 @@ class Penulis extends Model
     protected $table = 'penulis';
     public function Member()
     {
-       return $this->belongsTo(Penulis::class,'id_penulis','id'); 
+       return $this->hasMany(Penulis::class,'id_penulis','id'); 
     }
 }

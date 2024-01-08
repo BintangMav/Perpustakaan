@@ -6,8 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
+                    <h4 class="card-title">Edit Data Peminjaman</h4>
                     <form class="forms-sample" action="/peminjaman/{{$user->id}}/update" method="POST">
                         @csrf
                         <div class="form-group">
@@ -36,15 +35,15 @@
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah Buku</label>
-                            <input type="text" value="{{$peminjaman->jumlah_buku}}" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah buku">
+                            <input type="text" value="{{$peminjaman->jumlah_buku}}" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah buku" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Pinjam</label>
-                            <input type="date" value="{{$peminjaman->tgl_pinjam}}" name="tgl_pinjam" class="form-control" id="" placeholder="Tanggal Pinjam">
+                            <input type="date" value="{{$peminjaman->tgl_pinjam}}" name="tgl_pinjam" class="form-control" id="" placeholder="Tanggal Pinjam" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Kembali</label>
-                            <input type="date" value="{{$peminjaman->tgl_kembali}}" name="tgl_kembali" class="form-control" id="" placeholder="Tanggal Kembali">
+                            <input type="date" value="{{$peminjaman->tgl_kembali}}" name="tgl_kembali" class="form-control" id="" placeholder="Tanggal Kembali" required>
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="/buku" class="btn btn-light">Cancel</a>
