@@ -5,22 +5,30 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Buku;
 use App\Models\Peminjaman;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $jumlah_buku = Buku::count();
+        $jumlah_bukus = Buku::count();
         $peminjaman = Peminjaman::select()->orderBy('tgl_pinjam','desc')
-                                        ->limit(5)
-                                        ->get();
+        ->limit(5)
+        ->get();
 
-        $today = Carbon::today();
-        $endDate = Carbon::today()->subDays(3);
-        $total_pinjam = Peminjaman::select(Peminjaman::raw('SUM(jumlah_buku) as total_buku'))
-                        ->whereBetween('tgl_pinjam', [$endDate, $today])->first();
+        $totalBukuDipinjam = DB::table('peminjamen')
+        ->join('bukus', 'peminjamen.id_buku', '=', 'bukus.id')
+        ->sum('peminjamen.jumlah_buku');
 
-        return view ('home.dashboard', compact('peminjaman', 'jumlah_buku'), ['total_pinjam'=>$total_pinjam]);
+        $topBooks = DB::table('peminjamen')
+            ->select('bukus.judul_buku', DB::raw('SUM(peminjamen.jumlah_buku) as total_pinjam'))
+            ->join('bukus', 'peminjamen.id_buku', '=', 'bukus.id')
+            ->groupBy('bukus.judul_buku')
+            ->orderByDesc('total_pinjam')
+            ->limit(5)
+            ->get();
+        return view ('home.dashboard', compact('topBooks','peminjaman','totalBukuDipinjam','jumlah_bukus'));
+
     }
 }

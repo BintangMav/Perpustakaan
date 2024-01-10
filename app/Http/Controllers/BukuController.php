@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Peminjaman;
 use App\Models\Kategori;
 use App\Models\Penulis;
 use Illuminate\Http\Request;
@@ -77,7 +78,7 @@ class BukuController extends Controller
         //
     }
 
-    /**
+    /**Buku
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -107,6 +108,10 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
+        Peminjaman::where('id_buku',$id)
+        ->each(function($old){
+            $old->delete();
+        });
         $buku = Buku::find($id);
         $buku->delete();
         return redirect('/buku');

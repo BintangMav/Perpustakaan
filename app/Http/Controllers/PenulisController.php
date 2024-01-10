@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penulis;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class PenulisController extends Controller
@@ -91,6 +92,10 @@ class PenulisController extends Controller
      */
     public function destroy($id)
     {
+        Buku::where('id_penulis',$id)
+        ->each(function($old){
+            $old->delete();
+        });
         $penulis = Penulis::find($id);
         $penulis->delete();
         return redirect('/penulis');

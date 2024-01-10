@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
-// use App\Models\Peminjaman;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -98,10 +98,10 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        // Peminjaman::where('id_member',$id)
-        // ->each(function($old){
-        //     $old->delete();
-        // });
+        Peminjaman::where('id_member',$id)
+        ->each(function($old){
+            $old->delete();
+        });
         $member = Member::find($id);
         $member->delete();
         return redirect('/member');

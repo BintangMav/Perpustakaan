@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -91,6 +92,10 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
+        Buku::where('id_kategori',$id)
+        ->each(function($old){
+            $old->delete();
+        });
         $kategori = Kategori::find($id);
         $kategori->delete();
         return redirect('/kategori');

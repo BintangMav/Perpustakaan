@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-// use App\Models\Peminjaman;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -98,10 +98,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // Peminjaman::where('id_petugas',$id)
-        // ->each(function($old){
-        //     $old->delete();
-        // });
+        Peminjaman::where('id_petugas',$id)
+        ->each(function($old){
+            $old->delete();
+        });
         $user = User::find($id);
         $user->delete();
         return redirect('/user');

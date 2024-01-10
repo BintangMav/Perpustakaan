@@ -41,10 +41,10 @@
                             <label for="">Tanggal Pinjam</label>
                             <input type="date" value="{{$peminjaman->tgl_pinjam}}" name="tgl_pinjam" class="form-control" id="" placeholder="Tanggal Pinjam" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Tanggal Kembali</label>
                             <input type="date" value="{{$peminjaman->tgl_kembali}}" name="tgl_kembali" class="form-control" id="" placeholder="Tanggal Kembali" required>
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="/buku" class="btn btn-light">Cancel</a>
                     </form>

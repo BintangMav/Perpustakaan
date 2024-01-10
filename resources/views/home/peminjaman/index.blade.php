@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title"> Table Peminjaman <a href="/peminjaman/create" class="btn btn-info btn-sm float-right">Tambah</a></h4>
-                    <a href="/peminjaman/cetak" class="btn btn-success btn-sm float-right" target="_blank">Cetak Laporan</a>
                     <table id="dataTable" class="table table-hover">
                         <thead>
                             <tr>
@@ -31,7 +30,6 @@
                                 <td>{{$u->jumlah_buku}}</td>
                                 <td>{{$u->tgl_pinjam}}</td>
                                 <td>{{$u->tgl_kembali}}</td>
-                                <td>{{$u->tahun_buku}}</td>
                                 <td>
                                     <a href="/peminjaman/{{$u->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                                     <button class="btn btn-danger btn-sm" onclick="Delete('/peminjaman/{{$u->id}}/hapus')">Hapus</button>

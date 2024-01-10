@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+                    <a href="/peminjaman/cetak" class="btn btn-success btn-sm float-right" target="_blank">Cetak Laporan</a>
                     <table id="dataTable" class="table table-hover">
                         <thead>
                             <tr>
@@ -17,7 +17,6 @@
                                 <th>Jumlah Buku</th>
                                 <th>Tanggal Pinjam</th>
                                 <th>Tanggal Kembali</th>
-                                
                             </tr>
                         </thead>
                         <tbody>
@@ -30,8 +29,6 @@
                                 <td>{{$u->jumlah_buku}}</td>
                                 <td>{{$u->tgl_pinjam}}</td>
                                 <td>{{$u->tgl_kembali}}</td>
-                                <td>{{$u->tahun_buku}}</td>
-                               
                             </tr>
                             @endforeach
                         </tbody>

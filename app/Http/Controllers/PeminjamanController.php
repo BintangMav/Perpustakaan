@@ -63,30 +63,36 @@ class PeminjamanController extends Controller
      // Validasi form request, pastikan tgl_pinjam ada di dalam request
 
    
-    public function store(Request $request)
-    {
-        $request->validate([
-            'tgl_pinjam' => 'required|date',
-            'tgl_kembali' => 'nullable|date',
-        ]);
-    
-        // Ambil tanggal pinjam dari form
-        $tglPinjam = Carbon::parse($request->tgl_pinjam);
-    
-        // Hitung tanggal kembali dengan menambahkan 3 hari
-        $tglKembali = $request->filled('tgl_kembali') ? Carbon::parse($request->tgl_kembali) : $tglPinjam->addDays(3);
-    
-        Peminjaman::create([
-            'id_petugas'=>$request->id_petugas,
-            'id_member'=>$request->id_member,
-            'id_buku'=>$request->id_buku,
-            'tgl_pinjam'=>$request->tgl_pinjam,
-            'tgl_kembali'=>$request->tgl_kembali,
-            'jumlah_buku'=>$request->jumlah_buku,
-            $request->except(['_token']),
-        ]);
-        return redirect('/peminjaman');
+     public function store(Request $request)
+{
+    $buku = Buku::find($request->id_buku);
+
+    if ($request->jumlah_buku > $buku->stok_buku) {
+        return redirect()->back()->with('error', 'Jumlah buku yang diminta melebihi stok buku yang tersedia.');
     }
+
+    $stok_setelah_peminjaman = max(0, $buku->stok_buku - $request->jumlah_buku);
+
+    $tglPinjam = Carbon::parse($request->tgl_pinjam);
+    $tglKembali = $request->filled('tgl_kembali') ? Carbon::parse($request->tgl_kembali) : $tglPinjam->addDays(3);
+
+    $buku->stok_buku = $stok_setelah_peminjaman;
+    $buku->save();
+    Peminjaman::create([
+        'id_petugas' => $request->id_petugas,
+        'id_member' => $request->id_member,
+        'id_buku' => $request->id_buku,
+        'tgl_pinjam' => $request->tgl_pinjam,
+        'tgl_kembali' => $tglKembali, 
+        'jumlah_buku' => $request->jumlah_buku,
+        $request->except(['_token']),
+    ]);
+
+    Buku::where('id', $request->id_buku)->update(['stok_buku' => $stok_setelah_peminjaman]);
+    return redirect('/peminjaman');
+}
+
+     
 
     /**
      * Display the specified resource.

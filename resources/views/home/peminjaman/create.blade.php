@@ -9,6 +9,18 @@
                     <h4 class="card-title">Tambah Data Peminjaman</h4>
                     <form class="forms-sample" action="/peminjaman/simpan" method="POST">
                         @csrf
+                        @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    
                         <div class="form-group">
                             <label for="">Petugas</label>
                             <select name="id_petugas" class="form-control" id="">
@@ -35,17 +47,17 @@
                         </div>
                         <div class="form-group">
                             <label for="">Jumlah Buku</label>
-                            <input type="number" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah Buku" required>
+                            <input type="text" name="jumlah_buku" class="form-control" id="" placeholder="Jumlah Buku" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Pinjam</label>
                             <input type="date" name="tgl_pinjam" class="form-control" id="" placeholder="Tanggal Pinjam" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">tanggal Kembali</label>
                             <input type="date" name="tgl_kembali" class="form-control" id="" placeholder="Tanggal Kembali" required>
                             <!-- <input type="hidden" name="tgl_kembali_hidden" id="tgl_kembali_hidden"> -->
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <a href="/peminjaman" class="btn btn-light">Cancel</a>
                     </form>

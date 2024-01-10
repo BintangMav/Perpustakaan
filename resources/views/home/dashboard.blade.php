@@ -18,7 +18,7 @@
                         <div class=" col-md -6 col-xl report-inner-card">
                             <div class="inner-card-text">
                                 <span class="report-title">Buku</span>
-                                <h4>{{$jumlah_buku}}</h4>
+                                <h4>{{$jumlah_bukus}}</h4>
                             </div>
                             <div class="inner-card-icon bg-success">
                                 <i class="icon-user"></i>
@@ -27,7 +27,7 @@
                         <div class="col-md-6 col-xl report-inner-card">
                             <div class="inner-card-text">
                                 <span class="report-title">BUKU YANG DIPINJAM</span>
-                                <h4>{{number_format($total_pinjam->total_barang)}}</h4>
+                                <h4>{{$totalBukuDipinjam}}</h4>
                             </div>
                             <div class="inner-card-icon bg-warning">
                                 <i class="icon-briefcase"></i>
@@ -84,4 +84,39 @@
         </div>
     </div>
 </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-sm-flex align-items-baseline report-summary-header">
+                                <h5 class="font-weight-semibold">History Buku Yang Seing Dipinjam</h5> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row report-inner-cards-wrapper">
+                        <table class="table" id="">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul Buku</th>
+                                    <th>Total Dipinjam</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($topBooks as $book)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $book->judul_buku }}</td>
+                                        <td>{{ $book->total_pinjam }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
